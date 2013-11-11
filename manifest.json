@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "Snippets",
+  "description": "Extension to help you never forget a line.",
+  "version": "1.0",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_url"],
+      "css": ["css/style.css"],
+      "js": ["jquery.js", "amin.js"]
+    }
+  ],
+
+  "permissions": [
+    "http://localhost:3000",
+    // "tabs",
+    // "http://*/*",
+    // "https://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  }
+}
+
+// <url-pattern> := <scheme>://<host><path>
+// <scheme> := '*' | 'http' | 'https' | 'file' | 'ftp' | 'chrome-extension'
+// <host> := '*' | '*.' <any char except '/' and '*'>+
+// <path> := '/' <any chars>
