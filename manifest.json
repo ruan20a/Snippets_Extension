@@ -4,31 +4,36 @@
   "name": "Snippets",
   "description": "Extension to help you never forget a line.",
   "version": "1.0",
+  // this is the auto-update url link we might need in the future
+  // "update_url": "http://.../....xml",
 
-  // "content_scripts": [
-  //   {
-  //     "matches": ["<all_url>"],
-  //     "css": ["css/style.css"],
-  //     "js": ["jquery.js", "main.js"]
-  //   }
-  // ],
-
-  "permissions": [
-    "http://localhost:3000/*",
-    "http://*/"
-    // "tabs",
-    // "http://*/*",
-    // "https://*/*"
+// don't forget to designate the jquery.js file, unlike the older version,
+// the inclusion of jquery is not automatic and this cost me 4+ hours
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["javascripts/jquery.js","javascripts/content.js"],
+      "run_at": "document_end"
+    }
   ],
 
-  "background": {
-    // "page": "background.html",
-    "scripts": ["background.js"]
-  },
+// this is where you tell the extension what it can interact with
+  "permissions": [
+    // "http://localhost:3000/*",
+    "storage",
+    "http://*/*",
+    "tabs",
+    "https://*/*"
+  ],
 
+//this is considered the "controller" It is always on and looking for event listeners to pass
+  "background": {
+     "scripts": ["/javascripts/background.js"]
+  },
+// this is what your extension will pop up.
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   }
 }
 
