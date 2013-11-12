@@ -1,31 +1,35 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
+<html><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
 
-      img {
-        margin: 5px;
-        border: 2px solid black;
-        vertical-align: middle;
-        width: 75px;
-        height: 75px;
-      }
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
-     -->
-    <script src="popup.js"></script>
-  </head>
-  <body>
-  </body>
+</head>
+<body>
+  <h1> YAY SNIPPETS </h2>
+  <button id='show-snippet'> Show Snippets
+  </button>
+  <div id="all-snippets">
+  </div>
+  <div id="post-snippet">
+    <form id="snippet-form">
+      <label>Body</label>
+      <input name="body" type="text" placeholder="body">
+      <br>
+      <label>Source</label>
+      <input name="source" type="text" placeholder="source">
+      <br>
+      <label>User Owner</label>
+      <input name="user_id" type="text" placeholder="user_id">
+      <br>
+      <label>Tag List</label>
+      <input name="tag_list" type="text" placeholder="separate tags by comma">
+      <br>
+      <input type="submit" value="Create Snippet">
+    </form>
+  </div>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/main.js"></script>
+</body>
 </html>
-
