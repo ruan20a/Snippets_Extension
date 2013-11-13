@@ -29,7 +29,7 @@ $(document).ready(function(){
     }
 
     // testing_alert
-    // alert(new_data)
+    // alert(new_data);
 
     //sets the chrome data
     chrome.runtime.sendMessage({method:'setTitle', title: new_data, source: new_source});

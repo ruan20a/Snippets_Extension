@@ -14,4 +14,5 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
   else if(message.method == 'getTitle'){
     sendResponse(title);
     }
+  console.log(title);
 });

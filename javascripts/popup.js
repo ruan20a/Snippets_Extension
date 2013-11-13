@@ -10,6 +10,16 @@ $( document ).ready(function(){
   var bg = chrome.extension.getBackgroundPage();
   $('input[name=body]').val(bg.title)
   $('input[name=source]').val(bg.source)
+
+
+  //TODO trying to fix the popup position.
+  // var w = 600;
+  // var h = 100;
+  // var left = (window.screen.width/2)-(w/2);
+  // var top = (window.screen.height/2)-(h/2);
+
+  // var win = window.open("example.html", "_blank", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h);
+  // win.moveTo(left, top);
   }
 );
 
