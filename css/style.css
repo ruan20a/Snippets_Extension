@@ -1,4 +1,43 @@
 body{
-  width:500px;
-  height:300px;
+  width:600px;
+  height:1000px;
+  font-family: Arial, sans-serif;
+  margin:10px;
+}
+
+h1 {
+  margin: 10px;
+}
+
+
+button {
+  margin: 10px;
+}
+
+#body{
+  width:580px;
+  height:100px;
+  margin:10px;
+}
+
+#source{
+  width:580px;
+  height:20px;
+  margin:10px;
+}
+
+#tag_list{
+  width:580px;
+  height:100px;
+  margin:10px;
+}
+
+#user_id{
+  width:580px;
+  height:50px;
+  margin:10px;
+}
+
+label{
+  margin: 10px;
 }
