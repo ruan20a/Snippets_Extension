@@ -1,5 +1,5 @@
 
-var title;
+var title = null;
 
 // there are many ways for the background pages to communicate
 //this is the code that i found which is most intuitive to understand
