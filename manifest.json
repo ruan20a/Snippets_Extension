@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Snippets",
+  "name": "index",
   "description": "Extension to help you never forget a line.",
   "version": "1.0",
   // this is the auto-update url link we might need in the future
