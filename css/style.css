@@ -1,6 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Buenard|Flavors);
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
+html{
+  -webkit-appearance: none;
+  width:600px;
+  height:420px;
+  font-family: 'Montserrat';
+  margin-right:20px;
+}
+
 body{
   width:600px;
   height:300px;
@@ -24,11 +32,21 @@ a {
   font-size: 16px;
 }
 
+h2{
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
 #error {
   margin:10px;
   color: #FF472E;
 }
 
+
+#login-form{
+  top: 120px;
+  position: fixed;
+}
 textarea {
   white-space:pre-wrap;
 }
@@ -41,19 +59,28 @@ textarea {
 
 #notes{
   width:580px;
-  height:50px;
+  height:60px;
   margin:10px;
 }
 
 
 #tag_list{
   width:580px;
-  height:20px;
+  height:30px;
   margin:10px;
 }
 
 .submit{
+  -webkit-appearance: none;
+  height:30px;
+  border: 1px solid #aaa;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
   margin: 10px;
+  width: 100px;
+  border-radius: 3px;
+  background-color: #E5E5E5;
+  font-size: 12px;
 }
 
 

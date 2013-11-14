@@ -22,11 +22,9 @@ Snippet.login = function(e){
       $('#error').text("")
       $('#login-form').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
-      $('input[name=user_id]').addClass('hidden')
-      $('input[name=source]').addClass('hidden')
+      $('a').addClass('hidden')
       // $('#show-snippet').removeClass('hidden')
       $('#post-snippet').removeClass('hidden')
-
     }
   })
   }
@@ -106,9 +104,8 @@ $( document ).ready(function(){
   Storage.get("user_key", function(result){
     if (result.user_key > 0){
       $('#login-form').addClass('hidden')
+      $('a').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
-      $('input[name=user_id]').addClass('hidden')
-      $('input[name=source]').addClass('hidden')
       // $('#show-snippet').removeClass('hidden')
       $('#post-snippet').removeClass('hidden')
     }
