@@ -14,7 +14,7 @@
       <label>Email</label>
       <input id="email" name="email" type="text">
       <label>Password</label>
-      <input id="email" name="email" type="password">
+      <input id="email" name="password" type="password">
       <input type="submit" value="Login">
     </form>
   </div>
@@ -25,7 +25,7 @@
   <div id="all-snippets">
     <button id="show-snippet">Show Snippets</button>
   </div>
-  <div id="post-snippet">
+  <div id="post-snippet" class="hidden">
     <form id="snippet-form">
       <label>Body</label>
       <input id= "body" name="body" type="text" placeholder="body">
@@ -34,7 +34,10 @@
       <input id= "source" name="source" type="text" placeholder="source">
       <br>
       <label>User Owner</label>
-      <input id= "user_id"name="user_id" type="text" placeholder="user_id">
+      <input id= "user_id" name="user_id" type="text" placeholder="user_id">
+      <br>
+      <label>Notes</label>
+      <input id= "notes" name="notes" type="text" placeholder="notes">
       <br>
       <label>Tag List</label>
       <input id="tag_list" name="tag_list" type="text" placeholder="separate tags by comma">
