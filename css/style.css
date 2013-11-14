@@ -4,7 +4,7 @@
 html{
   -webkit-appearance: none;
   width:600px;
-  height:420px;
+  height:450px;
   font-family: 'Montserrat';
   margin-right:20px;
 }
@@ -42,13 +42,21 @@ h2{
   color: #FF472E;
 }
 
+input{
+  width:300px;
+  height:30px;
+  margin:10px;
+}
+
 
 #login-form{
   top: 120px;
   position: fixed;
 }
+
 textarea {
   white-space:pre-wrap;
+  line-height: 1.2em;
 }
 
 #body{
@@ -63,11 +71,15 @@ textarea {
   margin:10px;
 }
 
-
 #tag_list{
   width:580px;
   height:30px;
   margin:10px;
+}
+
+#message{
+  margin:10px;
+  color: #0DAF31;
 }
 
 .submit{

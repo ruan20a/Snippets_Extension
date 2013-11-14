@@ -19,6 +19,7 @@ Snippet.login = function(e){
   var getChromeStorage = function(){
     Storage.get("user_key", function(result){
     if (result.user_key > 0){
+      $('#login-intro').addClass('hidden')
       $('#error').text("")
       $('#login-form').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
@@ -81,9 +82,12 @@ Snippet.addSnippets = function(e){
       dataType: "json",
       crossDomain: true,
       data: {snippet: newSnippet}
-    }).done(function(snippet){
-      $('#message').text("Snippet Saved!")}
+    }).done(
+      $('#message').text("Snippet Saved!")
       )
+    if ($('#message').text() === "Snippet Saved!")
+      {setTimeout(function(){window.close()},1100)
+    }
 }
 
 Snippet.deleteSnippets = function(e){
@@ -99,21 +103,20 @@ Snippet.deleteSnippets = function(e){
 
 $( document ).ready(function(){
   var Storage = chrome.storage.local;
+  var popup = this
   // Storage.remove("user_key")
   //checks out if you have a key already set! if not you will only see the signup form
   Storage.get("user_key", function(result){
     if (result.user_key > 0){
       $('#login-form').addClass('hidden')
+      $('#login-intro').addClass('hidden')
       $('a').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
       // $('#show-snippet').removeClass('hidden')
       $('#post-snippet').removeClass('hidden')
     }
   })
-
   // Storage.remove("user_key")
-
-
   $('#login-form').on("submit", Snippet.login)
   // $('#show-snippet').on("click", Snippet.showSnippets)
   $('#post-snippet').on("submit", Snippet.addSnippets)

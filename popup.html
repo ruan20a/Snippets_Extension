@@ -12,14 +12,18 @@
 
   </div>
   <div id="testing-login">
-    <h2>Let's Get Started</h2>
+    <h2 id="login-intro">Let's Get Started</h2>
     <div id='error'>
     </div>
     <form id="login-form">
       <label>Email</label>
+      <br>
       <input id="email" name="email" type="text">
+      <br>
       <label>Password</label>
+      <br>
       <input id="password" name="password" type="password">
+      <br>
       <input class= "submit" type="submit" value="Login">
     </form>
   </div>
@@ -36,12 +40,10 @@
       <textarea id= "body" name="body" type="text"></textarea>
       <br>
       <label>Notes</label>
-      <textarea id= "notes" name="notes" type="text">
-      </textarea>
+      <textarea id= "notes" name="notes" type="text"></textarea>
       <br>
       <label>Tag List</label>
-      <textarea id="tag_list" name="tag_list" type="text" placeholder="Separate tags by comma">
-      </textarea>
+      <textarea id="tag_list" name="tag_list" type="text" placeholder="Separate tags by comma"></textarea>
       <br>
       <input class="hidden" id= "source" name="source" type="text" placeholder="source">
       <input class="hidden" id= "user_id" name="user_id" type="text" placeholder="user_id">
@@ -54,4 +56,5 @@
   <script src="javascripts/popup.js"></script>
 </body>
 </html>
-
+<!-- this let's us click to different links -->
+<base target="_blank" />
