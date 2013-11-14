@@ -103,7 +103,6 @@ Snippet.deleteSnippets = function(e){
 
 $( document ).ready(function(){
   var Storage = chrome.storage.local;
-  var popup = this
   // Storage.remove("user_key")
   //checks out if you have a key already set! if not you will only see the signup form
   Storage.get("user_key", function(result){
