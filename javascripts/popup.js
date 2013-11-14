@@ -24,8 +24,9 @@ Snippet.login = function(e){
       $('input[name=user_id]').val(result.user_key)
       $('input[name=user_id]').addClass('hidden')
       $('input[name=source]').addClass('hidden')
-      $('#show-snippet').removeClass('hidden')
+      // $('#show-snippet').removeClass('hidden')
       $('#post-snippet').removeClass('hidden')
+
     }
   })
   }
@@ -48,32 +49,32 @@ Snippet.login = function(e){
   )
 }
 
-Snippet.showSnippets = function() {
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/snippets.json",
-    crossDomain: true,
-    dataType: "json"
-  }).done(function(snippets){
-    var $ul = $("<ul>");
-    $.each(snippets, function(index, snippet){
-      $snippet = $("<li>")
-        .text(snippet.body)
-        .appendTo($ul);
-    })
-    $ul.appendTo($('#all-snippets'))
-  });
-   $('#show-snippet').off("click", Snippet.showSnippets)
-}
+// Snippet.showSnippets = function() {
+//   $.ajax({
+//     type: "GET",
+//     url: "http://localhost:3000/snippets.json",
+//     crossDomain: true,
+//     dataType: "json"
+//   }).done(function(snippets){
+//     var $ul = $("<ul>");
+//     $.each(snippets, function(index, snippet){
+//       $snippet = $("<li>")
+//         .text(snippet.body)
+//         .appendTo($ul);
+//     })
+//     $ul.appendTo($('#all-snippets'))
+//   });
+//    $('#show-snippet').off("click", Snippet.showSnippets)
+// }
 
 Snippet.addSnippets = function(e){
   e.preventDefault();
     var newSnippet = {
-      body: $('input[name=body]').val(),
+      body: $('textarea[name=body]').val(),
       source: $('input[name=source]').val(),
       user_id: $('input[name=user_id]').val(),
-      notes: $('input[name=notes]').val(),
-      tag_list: $('input[name=tag_list]').val()
+      notes: $('textarea[name=notes]').val(),
+      tag_list: $('textarea[name=tag_list]').val()
     };
 
     $.ajax({
@@ -83,8 +84,7 @@ Snippet.addSnippets = function(e){
       crossDomain: true,
       data: {snippet: newSnippet}
     }).done(function(snippet){
-      console.log(snippet.user_id)
-      console.log(snippet.tag_list)}
+      $('#message').text("Snippet Saved!")}
       )
 }
 
@@ -102,13 +102,14 @@ Snippet.deleteSnippets = function(e){
 $( document ).ready(function(){
   var Storage = chrome.storage.local;
   // Storage.remove("user_key")
+  //checks out if you have a key already set! if not you will only see the signup form
   Storage.get("user_key", function(result){
     if (result.user_key > 0){
       $('#login-form').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
       $('input[name=user_id]').addClass('hidden')
       $('input[name=source]').addClass('hidden')
-      $('#show-snippet').removeClass('hidden')
+      // $('#show-snippet').removeClass('hidden')
       $('#post-snippet').removeClass('hidden')
     }
   })
@@ -117,14 +118,14 @@ $( document ).ready(function(){
 
 
   $('#login-form').on("submit", Snippet.login)
-  $('#show-snippet').on("click", Snippet.showSnippets)
+  // $('#show-snippet').on("click", Snippet.showSnippets)
   $('#post-snippet').on("submit", Snippet.addSnippets)
   //reseting the values so it doesnt automatically take the last updated value
-  $('input[name=body]').val("")
+  $('textarea[name=body]').val("")
   $('input[name=source]').val("")
   //calling for my background page
   var bg = chrome.extension.getBackgroundPage();
-  $('input[name=body]').val(bg.title)
+  $('textarea[name=body]').val(bg.title)
   $('input[name=source]').val(bg.source)
 
   //TODO trying to fix the popup position.

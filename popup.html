@@ -7,8 +7,10 @@
 </head>
 <body>
   <div id="container">
-  <h1>Diego</h1>
-  <!-- these two divs are used for testing please do not delete yet-->
+  <div>
+    <h1>Diego <a href="http://localhost:3000/users/new">Sign Up</a> </h1>
+
+  </div>
   <div id="testing-login">
     <div id='error'>
     </div>
@@ -16,31 +18,36 @@
       <label>Email</label>
       <input id="email" name="email" type="text">
       <label>Password</label>
-      <input id="email" name="password" type="password">
-      <input type="submit" value="Login">
+      <input id="password" name="password" type="password">
+      <input class= "submit" type="submit" value="Login">
     </form>
   </div>
 
-  <div id="testing2"></div>
+
+
+  <div id="message"></div>
 
 
   <div id="all-snippets">
     <button id="show-snippet" class="hidden">Show Snippets</button>
   </div>
+
   <div id="post-snippet" class="hidden">
     <form id="snippet-form">
       <label>Body</label>
-      <input id= "body" name="body" type="text" placeholder="body">
+      <textarea id= "body" name="body" type="text"></textarea>
       <br>
       <label>Notes</label>
-      <input id= "notes" name="notes" type="text" placeholder="notes">
+      <textarea id= "notes" name="notes" type="text">
+      </textarea>
       <br>
       <label>Tag List</label>
-      <input id="tag_list" name="tag_list" type="text" placeholder="separate tags by comma">
+      <textarea id="tag_list" name="tag_list" type="text" placeholder="Separate tags by comma">
+      </textarea>
       <br>
       <input id= "source" name="source" type="text" placeholder="source">
       <input id= "user_id" name="user_id" type="text" placeholder="user_id">
-      <input type="submit" value="Create Snippet">
+      <input class= "submit" type="submit" value="Create Snippet">
     </form>
   </div>
 </div>
