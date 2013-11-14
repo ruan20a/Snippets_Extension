@@ -30,6 +30,13 @@ button {
   margin:10px;
 }
 
+#notes{
+  width:580px;
+  height:50px;
+  margin:10px;
+}
+
+
 #tag_list{
   width:580px;
   height:100px;

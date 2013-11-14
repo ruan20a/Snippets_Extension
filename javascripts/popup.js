@@ -1,4 +1,3 @@
-
 var Snippet = Snippet || {};
 
 Snippet.login = function(e){
@@ -17,17 +16,34 @@ Snippet.login = function(e){
     });
   }
 
+  var getChromeStorage = function(){
+    Storage.get("user_key", function(result){
+    if (result.user_key > 0){
+      $('#error').text("")
+      $('#login-form').addClass('hidden')
+      $('input[name=user_id]').val(result.user_key)
+      $('input[name=user_id]').addClass('hidden')
+      $('input[name=source]').addClass('hidden')
+      $('#show-snippet').removeClass('hidden')
+      $('#post-snippet').removeClass('hidden')
+    }
+  })
+  }
+
   $.ajax({
     type: "POST",
     url: "http://localhost:3000/login.json",
     crossDomain: true,
     data: newUser,
-    dataType: "json"
+    dataType: "json",
+    error: function(xhr, textStatus, error){
+      $('#error').text("Email and password do not match. Please try again")
+    }
   }).done(
     function(id){
       setChromeStorage(id)
       console.log(id)
-      $('#login-form').addClass('hidden')
+      getChromeStorage();
     }
   )
 }
@@ -48,7 +64,7 @@ Snippet.showSnippets = function() {
     $ul.appendTo($('#all-snippets'))
   });
    $('#show-snippet').off("click", Snippet.showSnippets)
-  }
+}
 
 Snippet.addSnippets = function(e){
   e.preventDefault();
@@ -59,6 +75,7 @@ Snippet.addSnippets = function(e){
       notes: $('input[name=notes]').val(),
       tag_list: $('input[name=tag_list]').val()
     };
+
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/snippets.json",
@@ -83,6 +100,20 @@ Snippet.deleteSnippets = function(e){
 }
 
 $( document ).ready(function(){
+  var Storage = chrome.storage.local;
+  // Storage.remove("user_key")
+  Storage.get("user_key", function(result){
+    if (result.user_key > 0){
+      $('#login-form').addClass('hidden')
+      $('input[name=user_id]').val(result.user_key)
+      $('input[name=user_id]').addClass('hidden')
+      $('input[name=source]').addClass('hidden')
+      $('#show-snippet').removeClass('hidden')
+      $('#post-snippet').removeClass('hidden')
+    }
+  })
+
+  // Storage.remove("user_key")
 
 
   $('#login-form').on("submit", Snippet.login)
@@ -95,7 +126,6 @@ $( document ).ready(function(){
   var bg = chrome.extension.getBackgroundPage();
   $('input[name=body]').val(bg.title)
   $('input[name=source]').val(bg.source)
-
 
   //TODO trying to fix the popup position.
   // var w = 600;
