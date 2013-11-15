@@ -70,11 +70,10 @@ Snippet.addSnippets = function(e){
           $('#message').text("We could not save your snippet =(")
         }
       }
-    )
-
+    );
     if ($('#message').text() === "Snippet Saved!")
-      debugger;
-      {setTimeout(function(){window.close()},1100)
+      {setTimeout(function()
+        {window.close()},1000)
     }
 }
 
@@ -91,7 +90,6 @@ $( document ).ready(function(){
       $('#post-snippet').removeClass('hidden')
     }
   })
-
   // Storage.remove("user_key")
   $('#login-form').on("submit", Snippet.login)
   // $('#show-snippet').on("click", Snippet.showSnippets)

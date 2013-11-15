@@ -31,17 +31,14 @@
   <div id="post-snippet" class="hidden">
     <div id="message"></div>
     <form id="snippet-form">
-      <label>Body</label>
-      <textarea id= "body" name="body" type="text" placeholder="Enter message"></textarea>
-      <label>Notes</label>
-      <textarea id= "notes" name="notes" type="text" placeholder="Enter notes"></textarea>
-      <br>
-      <label>Tag List</label>
-      <textarea id="tag_list" name="tag_list" type="text" placeholder="Separate tags by comma"></textarea>
-      <br>
+      <textarea id="body" name="body" type="text" placeholder="Enter some text to save." class="form-control"></textarea>
+      <textarea id="notes" name="notes" type="text" placeholder="Notes go here." class="form-control"></textarea>
+      <textarea id="tag_list" name="tag_list" type="text" placeholder="Comma-separated tags" class="form-control"></textarea>
       <input class="hidden" id= "source" name="source" type="text" placeholder="source">
       <input class="hidden" id= "user_id" name="user_id" type="text" placeholder="user_id">
       <input class= "submit" type="submit" value="Create Snippet">
+      <!-- <input class="hidden" id= "favicon_url" name="favicon_url" type="text" placeholder="favicon_url"> -->
+      <input class="submit btn btn-default" type="submit" value="Add">
     </form>
   </div>
 </div>
