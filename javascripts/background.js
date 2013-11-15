@@ -2,8 +2,7 @@
 var title = null;
 var source = null;
 
-// there are many ways for the background pages to communicate
-//this is the code that i found which is most intuitive to understand
+
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
   // make sure to that your sendMessages have methods so chrome can differentiate.
   if(message.method == 'setTitle'){
@@ -11,9 +10,9 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     title = message.title;
     source = message.source;
     }
+  //this method was originally made for the popup to talk to background but the other function getBackground works fine too.
   else if(message.method == 'getTitle'){
     sendResponse(title);
     }
-  console.log(title);
 });
 

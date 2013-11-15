@@ -18,19 +18,18 @@ Snippet.login = function(e){
 
   var getChromeStorage = function(){
     Storage.get("user_key", function(result){
-    if (result.user_key > 0){
-      $('#testing-login').addClass('hidden')
-      $('input[name=user_id]').val(result.user_key)
-      $('a').addClass('hidden')
-      // $('#show-snippet').removeClass('hidden')
-      $('#post-snippet').removeClass('hidden')
-    }
-  })
+      if (result.user_key > 0){
+        $('#testing-login').addClass('hidden')
+        $('input[name=user_id]').val(result.user_key)
+        $('a').addClass('hidden')
+        $('#post-snippet').removeClass('hidden')
+      }
+    })
   }
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:3000/login.json",
+    url: "http://sn1pp37s.herokuapp.com/login.json",
     crossDomain: true,
     data: newUser,
     dataType: "json",
@@ -46,24 +45,6 @@ Snippet.login = function(e){
   )
 }
 
-// Snippet.showSnippets = function() {
-//   $.ajax({
-//     type: "GET",
-//     url: "http://localhost:3000/snippets.json",
-//     crossDomain: true,
-//     dataType: "json"
-//   }).done(function(snippets){
-//     var $ul = $("<ul>");
-//     $.each(snippets, function(index, snippet){
-//       $snippet = $("<li>")
-//         .text(snippet.body)
-//         .appendTo($ul);
-//     })
-//     $ul.appendTo($('#all-snippets'))
-//   });
-//    $('#show-snippet').off("click", Snippet.showSnippets)
-// }
-
 Snippet.addSnippets = function(e){
   e.preventDefault();
     var newSnippet = {
@@ -76,27 +57,24 @@ Snippet.addSnippets = function(e){
 
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/snippets.json",
+      url: "http://sn1pp37s.herokuapp.com/snippets.json",
       dataType: "json",
       crossDomain: true,
       data: {snippet: newSnippet}
     }).done(
-      $('#message').text("Snippet Saved!")
-      )
+      function(result){
+        if(result.user_id > 0){
+          $('#message').text("Snippet Saved!")
+        }
+        else{
+          $('#message').text("We could not save your snippet =(")
+        }
+      }
+    );
     if ($('#message').text() === "Snippet Saved!")
-      {setTimeout(function(){window.close()},1100)
+      {setTimeout(function()
+        {window.close()},1000)
     }
-}
-
-Snippet.deleteSnippets = function(e){
-  e.preventDefault();
-  var $target = $(e.target).parent();
-  var snippet_id = $target.attr('id')
-      $.ajax({
-      type: "DELETE",
-      url: "/snippets/"+ snippet_id,
-      dataType: "json"
-    })
 }
 
 $( document ).ready(function(){
@@ -123,14 +101,5 @@ $( document ).ready(function(){
   var bg = chrome.extension.getBackgroundPage();
   $('textarea[name=body]').val(bg.title)
   $('input[name=source]').val(bg.source)
-
-  //TODO trying to fix the popup position.
-  // var w = 600;
-  // var h = 100;
-  // var left = (window.screen.width/2)-(w/2);
-  // var top = (window.screen.height/2)-(h/2);
-
-  // var win = window.open("example.html", "_blank", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h);
-  // win.moveTo(left, top);
   }
 );

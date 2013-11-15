@@ -3,12 +3,8 @@
 
   "name": "index",
   "description": "Extension to help you never forget a line.",
-  "version": "1.0",
-  // this is the auto-update url link we might need in the future
-  // "update_url": "http://.../....xml",
+  "version": "0.0.0.1",
 
-// don't forget to designate the jquery.js file, unlike the older version,
-// the inclusion of jquery is not automatic and this cost me 4+ hours
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -18,28 +14,21 @@
   ],
 
   "minimum_chrome_version": "23",
-// this is where you tell the extension what it can interact with
+
   "permissions": [
-    "http://localhost:3000/*",
+    "http://sn1pp37s.herokuapp.com/*",
     "storage",
     "http://*/*",
     "tabs",
     "https://*/*"
   ],
 
-
-//this is considered the "controller" It is always on and looking for event listeners to pass
   "background": {
      "scripts": ["/javascripts/background.js"]
   },
-// this is what your extension will pop up.
+
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   }
 }
-
-// <url-pattern> := <scheme>://<host><path>
-// <scheme> := '*' | 'http' | 'https' | 'file' | 'ftp' | 'chrome-extension'
-// <host> := '*' | '*.' <any char except '/' and '*'>+
-// <path> := '/' <any chars>

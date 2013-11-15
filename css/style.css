@@ -176,7 +176,7 @@ h2{
 }
 
 input {
-  font-size: 30px;
+  font-size: 14px;
   width: 300px;
   height: 30px;
   margin: 10px;
@@ -184,7 +184,7 @@ input {
 
 
 #login-form{
-  top: 120px;
+  top: 110px;
   position: fixed;
 }
 
