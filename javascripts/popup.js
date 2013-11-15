@@ -30,7 +30,7 @@ Snippet.login = function(e){
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:3000/login.json",
+    url: "http://sn1pp37s.herokuapp.com/login.json",
     crossDomain: true,
     data: newUser,
     dataType: "json",
@@ -76,7 +76,7 @@ Snippet.addSnippets = function(e){
 
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/snippets.json",
+      url: "http://sn1pp37s.herokuapp.com/snippets.json",
       dataType: "json",
       crossDomain: true,
       data: {snippet: newSnippet}
