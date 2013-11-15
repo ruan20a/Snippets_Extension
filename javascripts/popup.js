@@ -19,9 +19,7 @@ Snippet.login = function(e){
   var getChromeStorage = function(){
     Storage.get("user_key", function(result){
     if (result.user_key > 0){
-      $('#login-intro').addClass('hidden')
-      $('#error').text("")
-      $('#login-form').addClass('hidden')
+      $('#testing-login').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
       $('a').addClass('hidden')
       // $('#show-snippet').removeClass('hidden')
@@ -107,8 +105,7 @@ $( document ).ready(function(){
   //checks out if you have a key already set! if not you will only see the signup form
   Storage.get("user_key", function(result){
     if (result.user_key > 0){
-      $('#login-form').addClass('hidden')
-      $('#login-intro').addClass('hidden')
+      $('#testing-login').addClass('hidden')
       $('a').addClass('hidden')
       $('input[name=user_id]').val(result.user_key)
       // $('#show-snippet').removeClass('hidden')

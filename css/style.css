@@ -18,12 +18,12 @@ body{
 
 .hidden{
   display:none;
-  font-family: Buenard|Flavors;
+  font-family: 'Buenard|Flavors';
 }
 
 h1 {
   margin:10px;
-  font-family: Buenard|Flavors;
+  font-family: 'Buenard|Flavors';
 }
 
 a {
@@ -62,7 +62,7 @@ textarea {
 #body{
   width:580px;
   height:100px;
-  margin:10px;
+  margin: 10px 0px 10px 10px;
 }
 
 #notes{
