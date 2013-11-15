@@ -130,6 +130,8 @@ fieldset[disabled] .btn {
 
 @import url(http://fonts.googleapis.com/css?family=Buenard|Flavors);
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
+
 
 html {
   -webkit-appearance: none;
@@ -155,8 +157,8 @@ body{
 
 h1 {
   margin:10px;
-  font-family: 'Rockwell';
-  font-weight: 500;
+  font-family: 'Rokkitt', serif;
+  font-weight: 700;
 }
 
 a {
