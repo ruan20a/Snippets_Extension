@@ -133,6 +133,14 @@ fieldset[disabled] .btn {
 /*/*
 /*/
 
+<<<<<<< HEAD
+=======
+@import url(http://fonts.googleapis.com/css?family=Buenard|Flavors);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
+
+
+>>>>>>> 605c6de56fb4fee1ac64c9149e4ae784b2765b73
 html {
   -webkit-appearance: none;
   width: 500px;
