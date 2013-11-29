@@ -97,6 +97,8 @@ $( document ).ready(function(){
   //reseting the values so it doesnt automatically take the last updated value
   $('textarea[name=body]').val("")
   $('input[name=source]').val("")
+  //linking the wallace name to your user profile
+  $('#user-profile-link').on("click", Snippet.redirectPage)
   //calling for my background page
   var bg = chrome.extension.getBackgroundPage();
   $('textarea[name=body]').val(bg.title)
