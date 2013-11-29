@@ -1,3 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Buenard|Flavors);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Rokkitt);
+
+
 .form-control {
   display: block;
   width: 100%;
@@ -128,9 +133,6 @@ fieldset[disabled] .btn {
 /*/*
 /*/
 
-@import url(http://fonts.googleapis.com/css?family=Buenard|Flavors);
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-
 html {
   -webkit-appearance: none;
   width: 500px;
@@ -155,8 +157,8 @@ body{
 
 h1 {
   margin:10px;
-  font-family: 'Rockwell';
-  font-weight: 500;
+  font-family: 'Rokkitt', serif;
+  font-weight: 700;
 }
 
 a {
