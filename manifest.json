@@ -3,7 +3,7 @@
 
   "name": "wallace",
   "description": "Extension to help you never forget a line.",
-  "version": "0.0.0.2",
+  "version": "0.0.0.3",
 
   "content_scripts": [
     {
@@ -21,6 +21,10 @@
     "http://*/*",
     "tabs",
     "https://*/*"
+  ],
+
+  "web_accessible_resources": [
+    "javascripts/jquery.min.map"
   ],
 
   "background": {
