@@ -80,36 +80,52 @@ Snippet.addSnippets = function(e){
         }
       }
     );
-    if ($('#message').text() === "Snippet Saved!");
-      {setTimeout(function()
-        {window.close()},1000);
+
+
+    if ($('#message').text() === "Snippet Saved!")
+      e.preventDefault();
+    {
+      setTimeout(function(){window.close();},1500);
     }
+
 }
 
 Snippet.redirectPage = function(e){
   e.preventDefault();
   var Storage = chrome.storage.local;
-  var user_id
+  var user_id;
   var email;
   var password;
+  //due to asynchronous callback function of the local Storage, I am setting the variables and executing the ajax calls within the function
   Storage.get(["user_key","email","password"], function(result){
-    user_id = result.user_key
-    redirect_url = "http://sn1pp37s.herokuapp.com/users/" + user_id
+    user_id = result.user_key;
+    redirect_url = "http://sn1pp37s.herokuapp.com/users/" + user_id;
 
     var newUser = {
       email: result.email,
       password: result.password
     }
 
+    // need to set sessions so I will do a get request for the login page and simulate the log in
     $.ajax({
-    type: "POST",
-    url: "http://sn1pp37s.herokuapp.com/login",
-    dataType: "json",
-    crossDomain: true,
-    data: newUser,
-    success:
-      window.open(redirect_url,"_blank")
-    });
+      url: "http://sn1pp37s.herokuapp.com/login",
+      type: "GET",
+      dataType:"html",
+      success: function(){
+        $.ajax({
+          type: "POST",
+          url: "http://sn1pp37s.herokuapp.com/login",
+          dataType: "json",
+          crossDomain: true,
+          data: newUser,
+          success:
+          //cannot set this as an anonymous function, it needs to be called immediately after success.
+            window.open(redirect_url,"_blank")
+          });
+      }
+    })
+
+
   });
 }
 
