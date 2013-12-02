@@ -7,25 +7,33 @@ Snippet.login = function(e){
     email: $('input[name=email]').val(),
     password: $('input[name=password]').val()
   };
-  //settings Storage to reference chrome.storage.local;
-  var Storage = chrome.storage.local;
   //sending id to chrome storage
   var setChromeStorage = function(user_id){
     Storage.set({
       "user_key": user_id
-    });
-  }
+    })
+  };
+
+  // sending email and password to chrome storage
+  var setChromeStorage2 = function(newUser){
+    Storage.set({
+      "email": newUser.email,
+      "password": newUser.password
+    })
+  };
+
+  setChromeStorage2(newUser);
 
   var getChromeStorage = function(){
     Storage.get("user_key", function(result){
       if (result.user_key > 0){
-        $('#testing-login').addClass('hidden')
-        $('input[name=user_id]').val(result.user_key)
-        $('a').addClass('hidden')
-        $('#post-snippet').removeClass('hidden')
-      }
+        $('#testing-login').addClass('hidden');
+        $('input[name=user_id]').val(result.user_key);
+        $('a').addClass('hidden');
+        $('#post-snippet').removeClass('hidden');
+      };
     })
-  }
+  };
 
   $.ajax({
     type: "POST",
@@ -34,7 +42,7 @@ Snippet.login = function(e){
     data: newUser,
     dataType: "json",
     error: function(xhr, textStatus, error){
-      $('#error').text("Email and password do not match. Please try again")
+      $('#error').text("Email and password do not match. Please try again");
     }
   }).done(
     function(id){
@@ -43,6 +51,7 @@ Snippet.login = function(e){
       getChromeStorage();
     }
   )
+
 }
 
 Snippet.addSnippets = function(e){
@@ -64,17 +73,44 @@ Snippet.addSnippets = function(e){
     }).done(
       function(result){
         if(result.user_id > 0){
-          $('#message').text("Snippet Saved!")
+          $('#message').text("Snippet Saved!");
         }
         else{
-          $('#message').text("We could not save your snippet =(")
+          $('#message').text("We could not save your snippet =(");
         }
       }
     );
-    if ($('#message').text() === "Snippet Saved!")
+    if ($('#message').text() === "Snippet Saved!");
       {setTimeout(function()
-        {window.close()},1000)
+        {window.close()},1000);
     }
+}
+
+Snippet.redirectPage = function(e){
+  e.preventDefault();
+  var Storage = chrome.storage.local;
+  var user_id
+  var email;
+  var password;
+  Storage.get(["user_key","email","password"], function(result){
+    user_id = result.user_key
+    redirect_url = "http://sn1pp37s.herokuapp.com/users/" + user_id
+
+    var newUser = {
+      email: result.email,
+      password: result.password
+    }
+
+    $.ajax({
+    type: "POST",
+    url: "http://sn1pp37s.herokuapp.com/login",
+    dataType: "json",
+    crossDomain: true,
+    data: newUser,
+    success:
+      window.open(redirect_url,"_blank")
+    });
+  });
 }
 
 $( document ).ready(function(){
@@ -83,25 +119,25 @@ $( document ).ready(function(){
   //checks out if you have a key already set! if not you will only see the signup form
   Storage.get("user_key", function(result){
     if (result.user_key > 0){
-      $('#testing-login').addClass('hidden')
-      $('a').addClass('hidden')
-      $('input[name=user_id]').val(result.user_key)
+      $('#testing-login').addClass('hidden');
+      $('a').addClass('hidden');
+      $('input[name=user_id]').val(result.user_key);
       // $('#show-snippet').removeClass('hidden')
-      $('#post-snippet').removeClass('hidden')
+      $('#post-snippet').removeClass('hidden');
     }
   })
   // Storage.remove("user_key")
-  $('#login-form').on("submit", Snippet.login)
+  $('#login-form').on("submit", Snippet.login);
   // $('#show-snippet').on("click", Snippet.showSnippets)
-  $('#post-snippet').on("submit", Snippet.addSnippets)
+  $('#post-snippet').on("submit", Snippet.addSnippets);
   //reseting the values so it doesnt automatically take the last updated value
-  $('textarea[name=body]').val("")
-  $('input[name=source]').val("")
+  $('textarea[name=body]').val("");
+  $('input[name=source]').val("");
   //linking the wallace name to your user profile
-  $('#user-profile-link').on("click", Snippet.redirectPage)
+  $('#user-profile-link').on("click", Snippet.redirectPage);
   //calling for my background page
   var bg = chrome.extension.getBackgroundPage();
-  $('textarea[name=body]').val(bg.title)
-  $('input[name=source]').val(bg.source)
+  $('textarea[name=body]').val(bg.title);
+  $('input[name=source]').val(bg.source);
   }
 );
