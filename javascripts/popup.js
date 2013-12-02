@@ -7,6 +7,7 @@ Snippet.login = function(e){
     email: $('input[name=email]').val(),
     password: $('input[name=password]').val()
   };
+  var Storage = chrome.storage.local;
   //sending id to chrome storage
   var setChromeStorage = function(user_id){
     Storage.set({
@@ -91,7 +92,7 @@ Snippet.addSnippets = function(e){
 }
 
 Snippet.redirectPage = function(e){
-  e.preventDefault();
+  // e.preventDefault();
   var Storage = chrome.storage.local;
   var user_id;
   var email;
@@ -104,7 +105,7 @@ Snippet.redirectPage = function(e){
     var newUser = {
       email: result.email,
       password: result.password
-    }
+    };
 
     // need to set sessions so I will do a get request for the login page and simulate the log in
     $.ajax({
@@ -128,6 +129,7 @@ Snippet.redirectPage = function(e){
 
   });
 }
+
 
 $( document ).ready(function(){
   var Storage = chrome.storage.local;
