@@ -92,48 +92,55 @@ Snippet.addSnippets = function(e){
 }
 
 Snippet.redirectPage = function(e){
-  // e.preventDefault();
   var Storage = chrome.storage.local;
   var user_id;
   var email;
   var password;
   //due to asynchronous callback function of the local Storage, I am setting the variables and executing the ajax calls within the function
+
   Storage.get(["user_key","email","password"], function(result){
-    user_id = result.user_key;
+
+    var user_id;
+    //need to set up redirect to signup if people click the wallace name
+    if(result.user_key){
+      user_id = result.user_key;
+    }
+    else{
+      user_id = "new";
+    }
+
     redirect_url = "http://sn1pp37s.herokuapp.com/users/" + user_id;
 
     var newUser = {
       email: result.email,
       password: result.password
     };
-
-    // need to set sessions so I will do a get request for the login page and simulate the log in
+    // logging out first to prevent any sessions from crashing into each other.
+    // post only redirects correctly correctly if we send with html, which is fine since we don't need it to return a code
     $.ajax({
-      url: "http://sn1pp37s.herokuapp.com/login",
+      url: "http://sn1pp37s.herokuapp.com/logout",
       type: "GET",
-      dataType:"html",
-      success: function(){
+      crossDomain: true,
+      dataType:"json",
+      complete: function(){
         $.ajax({
-          type: "POST",
           url: "http://sn1pp37s.herokuapp.com/login",
-          dataType: "json",
+          type: "POST",
+          dataType: "html",
           crossDomain: true,
           data: newUser,
-          success:
-          //cannot set this as an anonymous function, it needs to be called immediately after success.
+          complete: function(result){
             window.open(redirect_url,"_blank")
-          });
+          }
+        })
       }
     })
-
-
   });
 }
 
 
 $( document ).ready(function(){
   var Storage = chrome.storage.local;
-  // Storage.remove("user_key")
   //checks out if you have a key already set! if not you will only see the signup form
   Storage.get("user_key", function(result){
     if (result.user_key > 0){
