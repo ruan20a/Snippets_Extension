@@ -3,7 +3,7 @@
 
   "name": "wallace",
   "description": "Extension to help you never forget a line.",
-  "version": "0.0.0.3",
+  "version": "0.0.0.4",
 
   "content_scripts": [
     {
